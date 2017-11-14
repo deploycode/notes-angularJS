@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="angular-local-storage.min.js"></script>
+    <script src="controller.js"></script>
+  </head>
+  <body ng-controller="myController">
+    <ul>
+      <li ng-repeat="pendiente in todo">
+        <strong>{{ pendiente.actividad }}</strong> - {{ pendiente.date | date: 'short' }}
+      </li>
+    </ul>
+    <form ng-submit="addToDo()">
+      <input type="text"            ng-model="newToDo.actividad">
+      <input type="datetime-local"  ng-model="newToDo.date">
+      <input type="submit"          value="save">
+    </form>
+    <button type="button" ng-click="todo = []" >Clear</button>
+  </body>
+</html>

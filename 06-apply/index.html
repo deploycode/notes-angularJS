@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script type="text/javascript">
+      angular.module("myApp", [])
+        .controller("myController" , function($scope){
+          $scope.message= "Hello World";
+          setTimeout(function(){
+
+            /*
+              $scope.message="Bye World";
+              console.log($scope.message);
+              $scope.$digest();
+            */
+
+            /*
+              $scope.$apply(function(){
+                $scope.message="Bye World";
+              });
+            */
+
+            document.querySelector("#btn").addEventListener("click", function(){
+              $scope.$apply(function(){
+                $scope.message="Bye World";
+              });
+            });
+
+          }, 2000);
+      });
+    </script>
+  </head>
+  <body ng-controller="myController">
+    <h1>{{ message }}</h1>
+    <button type="button" id="btn">Change</button>
+  </body>
+</html>
